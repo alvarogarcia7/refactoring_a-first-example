@@ -56,10 +56,17 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void owe_seven_and_a_half_for_the_childrens_movie_for_seven_days() throws Exception {
-		final Customer customer = new Customer(customerName);
-		customer.addRental(new Rental(CHILDRENS_MOVIE, 7));
-		assertThat(customer.statement(), is(header(customerName) + "\tchildrens\t" + (7.5) + "\n" + owed(7.5) + earnedFrequentRenter(1)));
+	public void flat_rate_for_childrens_after_the_third_day() throws Exception {
+		for (int days = 3; days <= 100; days++) {
+			final Customer customer = new Customer(customerName);
+			customer.addRental(new Rental(CHILDRENS_MOVIE, days));
+
+			final double subtotal = 1.5 + (days - 3) * 1.5;
+			final double total = subtotal;
+
+			assertThat(customer.statement(), is(header(customerName) + "\tchildrens\t" + (subtotal) + "\n" + owed(total)
+					+ earnedFrequentRenter(1)));
+		}
 	}
 
 	@Test
