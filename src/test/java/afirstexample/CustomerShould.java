@@ -36,7 +36,7 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void cumulate_several_different_rentals() throws Exception {
+	public void cumulate_several_types_of_rentals() throws Exception {
 		final Customer customer = new Customer(customerName);
 		customer.addRental(new Rental(REGULAR_MOVIE, 1));
 		customer.addRental(new Rental(CHILDRENS_MOVIE, 1));
