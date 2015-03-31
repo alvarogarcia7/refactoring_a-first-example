@@ -34,6 +34,14 @@ public class CustomerShould {
 	}
 
 	@Test
+	public void owe_three_for_the_childrens_movie_for_four_days() throws Exception {
+		final Customer customer = new Customer(customerName);
+		customer.addRental(new Rental(CHILDRENS_MOVIE, 4));
+		assertThat(customer.statement(), is(header(customerName) + "\tchildrens\t" + (3.0) + "\n" + owed(3)
+				+ earnedFrequentRenter(1)));
+	}
+
+	@Test
 	public void owe_three_per_each_day_when_rented_a_release_for_more_than_1_days() throws Exception {
 		for (int days = 1; days < 1000; days++) {
 			final Customer customer = new Customer(customerName);
