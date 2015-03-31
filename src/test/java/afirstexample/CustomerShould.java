@@ -8,6 +8,7 @@ import org.junit.Test;
 public class CustomerShould {
 
 	private static final Movie RELEASE_MOVIE = new Movie("release", Movie.NEW_RELEASE);
+	private static final Movie CHILDRENS_MOVIE = new Movie("childrens", Movie.CHILDRENS);
 	final String customerName = "John";
 
 	@Test
@@ -20,6 +21,16 @@ public class CustomerShould {
 	public void owe_zero_when_no_childrens_rentals() throws Exception {
 		final Customer customer = new Customer(customerName);
 		assertThat(customer.statement(), is(header(customerName) + owed(0) + earnedFrequentRenter(0)));
+	}
+
+	@Test
+	public void owe_one_and_a_half_per_each_day_for_the_first_three_days() throws Exception {
+		for (int days = 1; days <= 3; days++) {
+			final Customer customer = new Customer(customerName);
+			customer.addRental(new Rental(CHILDRENS_MOVIE, days));
+			assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\tchildrens\t" + (1.5) + "\n"
+					+ owed(1.5) + earnedFrequentRenter(Math.min(days, 1))));
+		}
 	}
 
 	@Test
