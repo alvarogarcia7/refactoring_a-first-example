@@ -8,4 +8,16 @@
   <groupId>com.example.kata.refactoring</groupId>
   <artifactId>afirstexample</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+	  	<groupId>org.hamcrest</groupId>
+	  	<artifactId>hamcrest-all</artifactId>
+	  	<scope>test</scope>
+  	</dependency>
+  </dependencies>
 </project>
