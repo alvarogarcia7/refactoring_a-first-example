@@ -25,16 +25,6 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void flat_rate_for_childrens_during_the_first_three_days() throws Exception {
-		for (int days = 1; days <= 3; days++) {
-			final Customer customer = new Customer(customerName);
-			customer.addRental(new Rental(CHILDRENS_MOVIE, days));
-			assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\tchildrens\t" + (1.5) + "\n"
-					+ owed(1.5) + earnedFrequentRenter(1)));
-		}
-	}
-
-	@Test
 	public void constant_amount_for_regular_movies_during_the_first_two_days() throws Exception {
 		for (int days = 1; days <= 2; days++) {
 			final Customer customer = new Customer(customerName);
@@ -55,6 +45,16 @@ public class CustomerShould {
 
 			assertThat(customer.statement(), is(header(customerName) + "\tregular\t" + (subtotal) + "\n" + owed(total)
 					+ earnedFrequentRenter(1)));
+		}
+	}
+
+	@Test
+	public void flat_rate_for_childrens_during_the_first_three_days() throws Exception {
+		for (int days = 1; days <= 3; days++) {
+			final Customer customer = new Customer(customerName);
+			customer.addRental(new Rental(CHILDRENS_MOVIE, days));
+			assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\tchildrens\t" + (1.5) + "\n"
+					+ owed(1.5) + earnedFrequentRenter(1)));
 		}
 	}
 
