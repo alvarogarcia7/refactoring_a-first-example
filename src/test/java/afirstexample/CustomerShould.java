@@ -20,7 +20,11 @@ public class CustomerShould {
 		final Customer customer = new Customer("Alice");
 		customer.addRental(new Rental(RELEASE_MOVIE, 1));
 		assertThat(customer.statement(),
-				is(header("Alice") + "\trelease\t3.0\n" + owed(3.0) + "You earned 1 frequent renter points"));
+ is(header("Alice") + "\trelease\t3.0\n" + owed(3.0) + earnedFrequentRenter(1)));
+	}
+
+	private String earnedFrequentRenter(final int points) {
+		return "You earned " + points + " frequent renter points";
 	}
 
 	private String owed(final double amount) {
