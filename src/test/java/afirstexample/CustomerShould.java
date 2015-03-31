@@ -93,14 +93,23 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void owe_three_per_each_day_when_rented_a_release_for_more_than_1_days() throws Exception {
-		for (int days = 1; days < 1000; days++) {
+	public void award_two_frequent_renter_points_when_rented_a_release_for_more_than_one_day() throws Exception {
+		for (int days = 2; days < 1000; days++) {
 			final Customer customer = new Customer(customerName);
 			customer.addRental(new Rental(RELEASE_MOVIE, days));
 			assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\trelease\t" + (days * 3.0) + "\n"
-					+ owed(days * 3.0)
-					+ earnedFrequentRenter(Math.min(days, 2))));
+					+ owed(days * 3.0) + earnedFrequentRenter(2)));
 		}
+	}
+
+	@Test
+	public void owe_three_for_the_first_day_when_rented_a_release() throws Exception {
+		final int days = 1;
+		final Customer customer = new Customer(customerName);
+		customer.addRental(new Rental(RELEASE_MOVIE, days));
+		assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\trelease\t" + (days * 3.0) + "\n"
+				+ owed(days * 3.0)
+ + earnedFrequentRenter(1)));
 	}
 
 
