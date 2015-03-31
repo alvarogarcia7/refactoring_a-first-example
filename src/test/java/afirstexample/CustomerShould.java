@@ -17,26 +17,16 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void owe_3_when_rented_a_release_for_a_day() throws Exception {
-		final Customer customer = new Customer(customerName);
-		customer.addRental(new Rental(RELEASE_MOVIE, 1));
-		assertThat(customer.statement(),
-				is(header(customerName) + "\trelease\t3.0\n" + owed(3.0) + earnedFrequentRenter(1)));
+	public void owe_three_per_each_day_when_rented_a_release_for_more_than_4_days() throws Exception {
+		for (int days = 1; days < 1000; days++) {
+			final Customer customer = new Customer(customerName);
+			customer.addRental(new Rental(RELEASE_MOVIE, days));
+			assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\trelease\t" + (days * 3.0) + "\n"
+					+ owed(days * 3.0)
+					+ earnedFrequentRenter(Math.min(days, 2))));
+		}
 	}
 
-	@Test
-	public void owe_6_when_rented_a_release_for_two_days() throws Exception {
-		final Customer customer = new Customer(customerName);
-		customer.addRental(new Rental(RELEASE_MOVIE, 2));
-		assertThat(customer.statement(), is(header(customerName) + "\trelease\t6.0\n" + owed(6.0) + earnedFrequentRenter(2)));
-	}
-
-	@Test
-	public void owe_9_when_rented_a_release_for_three_days() throws Exception {
-		final Customer customer = new Customer(customerName);
-		customer.addRental(new Rental(RELEASE_MOVIE, 3));
-		assertThat(customer.statement(), is(header(customerName) + "\trelease\t9.0\n" + owed(9.0) + earnedFrequentRenter(2)));
-	}
 
 	private String earnedFrequentRenter(final int points) {
 		return "You earned " + points + " frequent renter points";
