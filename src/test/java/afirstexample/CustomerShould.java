@@ -35,7 +35,7 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void flat_rate_for_regular_movies_during_the_first_two_days() throws Exception {
+	public void constant_amount_for_regular_movies_during_the_first_two_days() throws Exception {
 		for (int days = 1; days <= 2; days++) {
 			final Customer customer = new Customer(customerName);
 			customer.addRental(new Rental(REGULAR_MOVIE, days));
