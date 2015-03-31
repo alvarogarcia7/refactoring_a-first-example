@@ -11,16 +11,18 @@ public class CustomerShould {
 
 	@Test
 	public void owe_zero_when_no_rentals() throws Exception {
-		final Customer customer = new Customer("John");
-		assertThat(customer.statement(), is(header("John") + owed(0) + earnedFrequentRenter(0)));
+		final String customerName = "John";
+		final Customer customer = new Customer(customerName);
+		assertThat(customer.statement(), is(header(customerName) + owed(0) + earnedFrequentRenter(0)));
 	}
 
 	@Test
 	public void owe_3_when_rented_a_release_for_a_day() throws Exception {
-		final Customer customer = new Customer("Alice");
+		final String customerName = "Alice";
+		final Customer customer = new Customer(customerName);
 		customer.addRental(new Rental(RELEASE_MOVIE, 1));
 		assertThat(customer.statement(),
-				is(header("Alice") + "\trelease\t3.0\n" + owed(3.0) + earnedFrequentRenter(1)));
+				is(header(customerName) + "\trelease\t3.0\n" + owed(3.0) + earnedFrequentRenter(1)));
 	}
 
 	private String earnedFrequentRenter(final int points) {
