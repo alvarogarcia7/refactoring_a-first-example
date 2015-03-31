@@ -11,7 +11,7 @@ public class CustomerShould {
 	final String customerName = "John";
 
 	@Test
-	public void owe_zero_when_no_rentals() throws Exception {
+	public void owe_zero_when_no_release_rentals() throws Exception {
 		final Customer customer = new Customer(customerName);
 		assertThat(customer.statement(), is(header(customerName) + owed(0) + earnedFrequentRenter(0)));
 	}
