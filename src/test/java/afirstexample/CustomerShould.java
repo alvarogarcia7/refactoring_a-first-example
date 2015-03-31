@@ -25,6 +25,15 @@ public class CustomerShould {
 	}
 
 	@Test
+	public void cumulate_two_rentals() throws Exception {
+		final Customer customer = new Customer(customerName);
+		customer.addRental(new Rental(REGULAR_MOVIE, 1));
+		customer.addRental(new Rental(REGULAR_MOVIE, 1));
+		assertThat(customer.statement(), is(header(customerName) + "\tregular\t" + (2.0) + "\n" + "\tregular\t" + (2.0) + "\n" + owed(4.0)
+				+ earnedFrequentRenter(2)));
+	}
+
+	@Test
 	public void constant_amount_for_regular_movies_during_the_first_two_days() throws Exception {
 		for (int days = 1; days <= 2; days++) {
 			final Customer customer = new Customer(customerName);
