@@ -25,12 +25,14 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void cumulate_two_rentals() throws Exception {
+	public void cumulate_several_regular_rentals() throws Exception {
 		final Customer customer = new Customer(customerName);
 		customer.addRental(new Rental(REGULAR_MOVIE, 1));
 		customer.addRental(new Rental(REGULAR_MOVIE, 1));
-		assertThat(customer.statement(), is(header(customerName) + "\tregular\t" + (2.0) + "\n" + "\tregular\t" + (2.0) + "\n" + owed(4.0)
-				+ earnedFrequentRenter(2)));
+		customer.addRental(new Rental(REGULAR_MOVIE, 2));
+		assertThat(customer.statement(), is(header(customerName) + "\tregular\t" + (2.0) + "\n" + "\tregular\t" + (2.0) + "\n"
+				+ "\tregular\t" + (2.0) + "\n" + owed(6.0)
+				+ earnedFrequentRenter(3)));
 	}
 
 	@Test
