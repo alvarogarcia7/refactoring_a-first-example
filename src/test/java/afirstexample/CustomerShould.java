@@ -29,7 +29,7 @@ public class CustomerShould {
 			final Customer customer = new Customer(customerName);
 			customer.addRental(new Rental(CHILDRENS_MOVIE, days));
 			assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\tchildrens\t" + (1.5) + "\n"
-					+ owed(1.5) + earnedFrequentRenter(Math.min(days, 1))));
+					+ owed(1.5) + earnedFrequentRenter(1)));
 		}
 	}
 
