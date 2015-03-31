@@ -12,7 +12,7 @@ public class CustomerShould {
 	@Test
 	public void owe_zero_when_no_rentals() throws Exception {
 		final Customer customer = new Customer("John");
-		assertThat(customer.statement(), is("Rental Record for John\nAmount owed is 0.0\nYou earned 0 frequent renter points"));
+		assertThat(customer.statement(), is(header("John") + owed(0) + earnedFrequentRenter(0)));
 	}
 
 	@Test
@@ -20,7 +20,7 @@ public class CustomerShould {
 		final Customer customer = new Customer("Alice");
 		customer.addRental(new Rental(RELEASE_MOVIE, 1));
 		assertThat(customer.statement(),
- is(header("Alice") + "\trelease\t3.0\n" + owed(3.0) + earnedFrequentRenter(1)));
+				is(header("Alice") + "\trelease\t3.0\n" + owed(3.0) + earnedFrequentRenter(1)));
 	}
 
 	private String earnedFrequentRenter(final int points) {
