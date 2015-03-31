@@ -17,6 +17,12 @@ public class CustomerShould {
 	}
 
 	@Test
+	public void owe_zero_when_no_childrens_rentals() throws Exception {
+		final Customer customer = new Customer(customerName);
+		assertThat(customer.statement(), is(header(customerName) + owed(0) + earnedFrequentRenter(0)));
+	}
+
+	@Test
 	public void owe_three_per_each_day_when_rented_a_release_for_more_than_1_days() throws Exception {
 		for (int days = 1; days < 1000; days++) {
 			final Customer customer = new Customer(customerName);
