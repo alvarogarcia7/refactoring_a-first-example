@@ -31,8 +31,8 @@ public class CustomerShould {
 		customer.addRental(new Rental(REGULAR_MOVIE, 1));
 		customer.addRental(new Rental(REGULAR_MOVIE, 2));
 		customer.addRental(new Rental(REGULAR_MOVIE, 3));
-		assertThat(customer.statement(), is(header(customerName) + "\tregular\t" + (2.0) + "\n" + "\tregular\t" + (2.0) + "\n"
-				+ "\tregular\t" + (2.0) + "\n" + "\tregular\t" + (3.5) + "\n" + owed(9.5) + earnedFrequentRenter(4)));
+		assertThat(customer.statement(), is(header(customerName) + line(REGULAR_MOVIE, 2) + line(REGULAR_MOVIE, 2) + line(REGULAR_MOVIE, 2)
+				+ line(REGULAR_MOVIE, 3.5) + owed(9.5) + earnedFrequentRenter(4)));
 	}
 
 	@Test
@@ -109,7 +109,7 @@ public class CustomerShould {
 		customer.addRental(new Rental(RELEASE_MOVIE, days));
 		assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\trelease\t" + (days * 3.0) + "\n"
 				+ owed(days * 3.0)
- + earnedFrequentRenter(1)));
+				+ earnedFrequentRenter(1)));
 	}
 
 
@@ -123,6 +123,10 @@ public class CustomerShould {
 
 	private String header(final String customerName) {
 		return "Rental Record for " + customerName + "\n";
+	}
+
+	private String line(final Movie movie, final double price) {
+		return "\t" + movie.getTitle() + "\t" + (price) + "\n";
 	}
 
 }
