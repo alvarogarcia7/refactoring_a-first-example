@@ -30,9 +30,9 @@ public class CustomerShould {
 		customer.addRental(new Rental(REGULAR_MOVIE, 1));
 		customer.addRental(new Rental(REGULAR_MOVIE, 1));
 		customer.addRental(new Rental(REGULAR_MOVIE, 2));
+		customer.addRental(new Rental(REGULAR_MOVIE, 3));
 		assertThat(customer.statement(), is(header(customerName) + "\tregular\t" + (2.0) + "\n" + "\tregular\t" + (2.0) + "\n"
-				+ "\tregular\t" + (2.0) + "\n" + owed(6.0)
-				+ earnedFrequentRenter(3)));
+				+ "\tregular\t" + (2.0) + "\n" + "\tregular\t" + (3.5) + "\n" + owed(9.5) + earnedFrequentRenter(4)));
 	}
 
 	@Test
