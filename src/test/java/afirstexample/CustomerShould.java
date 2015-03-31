@@ -24,7 +24,7 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void owe_one_and_a_half_per_each_day_for_the_first_three_days() throws Exception {
+	public void flat_rate_for_childrens_during_the_first_three_days() throws Exception {
 		for (int days = 1; days <= 3; days++) {
 			final Customer customer = new Customer(customerName);
 			customer.addRental(new Rental(CHILDRENS_MOVIE, days));
