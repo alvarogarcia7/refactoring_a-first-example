@@ -34,28 +34,6 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void owe_three_for_the_childrens_movie_for_four_days() throws Exception {
-		final Customer customer = new Customer(customerName);
-		customer.addRental(new Rental(CHILDRENS_MOVIE, 4));
-		assertThat(customer.statement(), is(header(customerName) + "\tchildrens\t" + (3.0) + "\n" + owed(3)
-				+ earnedFrequentRenter(1)));
-	}
-
-	@Test
-	public void owe_four_and_a_half_for_the_childrens_movie_for_five_days() throws Exception {
-		final Customer customer = new Customer(customerName);
-		customer.addRental(new Rental(CHILDRENS_MOVIE, 5));
-		assertThat(customer.statement(), is(header(customerName) + "\tchildrens\t" + (4.5) + "\n" + owed(4.5) + earnedFrequentRenter(1)));
-	}
-
-	@Test
-	public void owe_six_for_the_childrens_movie_for_six_days() throws Exception {
-		final Customer customer = new Customer(customerName);
-		customer.addRental(new Rental(CHILDRENS_MOVIE, 6));
-		assertThat(customer.statement(), is(header(customerName) + "\tchildrens\t" + (6.0) + "\n" + owed(6) + earnedFrequentRenter(1)));
-	}
-
-	@Test
 	public void flat_rate_for_childrens_after_the_third_day() throws Exception {
 		for (int days = 3; days <= 100; days++) {
 			final Customer customer = new Customer(customerName);
