@@ -25,7 +25,7 @@ public class CustomerShould {
 	}
 
 	@Test
-	public void owe_6_when_rented_a_release_for_two_day() throws Exception {
+	public void owe_6_when_rented_a_release_for_two_days() throws Exception {
 		final Customer customer = new Customer(customerName);
 		customer.addRental(new Rental(RELEASE_MOVIE, 2));
 		assertThat(customer.statement(), is(header(customerName) + "\trelease\t6.0\n" + owed(6.0) + earnedFrequentRenter(2)));
