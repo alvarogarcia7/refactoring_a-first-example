@@ -20,7 +20,11 @@ public class CustomerShould {
 		final Customer customer = new Customer("Alice");
 		customer.addRental(new Rental(RELEASE_MOVIE, 1));
 		assertThat(customer.statement(),
-				is("Rental Record for Alice\n\trelease\t3.0\nAmount owed is 3.0\nYou earned 1 frequent renter points"));
+ is(header("Alice") + "\trelease\t3.0\nAmount owed is 3.0\nYou earned 1 frequent renter points"));
+	}
+
+	private String header(final String customerName) {
+		return "Rental Record for " + customerName + "\n";
 	}
 
 }
