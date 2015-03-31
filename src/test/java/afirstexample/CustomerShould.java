@@ -9,6 +9,7 @@ public class CustomerShould {
 
 	private static final Movie RELEASE_MOVIE = new Movie("release", Movie.NEW_RELEASE);
 	private static final Movie CHILDRENS_MOVIE = new Movie("childrens", Movie.CHILDRENS);
+	private static final Movie REGULAR_MOVIE = new Movie("regular", Movie.REGULAR);
 	final String customerName = "John";
 
 	@Test
@@ -30,6 +31,20 @@ public class CustomerShould {
 			customer.addRental(new Rental(CHILDRENS_MOVIE, days));
 			assertThat("failed when days = " + days, customer.statement(), is(header(customerName) + "\tchildrens\t" + (1.5) + "\n"
 					+ owed(1.5) + earnedFrequentRenter(1)));
+		}
+	}
+
+	@Test
+	public void flat_rate_for_regular_movies_after_the_second_day() throws Exception {
+		for (int days = 2; days <= 100; days++) {
+			final Customer customer = new Customer(customerName);
+			customer.addRental(new Rental(REGULAR_MOVIE, days));
+
+			final double subtotal = 2 + (days - 2) * 1.5;
+			final double total = subtotal;
+
+			assertThat(customer.statement(), is(header(customerName) + "\tregular\t" + (subtotal) + "\n" + owed(total)
+					+ earnedFrequentRenter(1)));
 		}
 	}
 
