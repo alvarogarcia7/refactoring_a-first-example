@@ -31,6 +31,13 @@ public class CustomerShould {
 		assertThat(customer.statement(), is(header(customerName) + "\trelease\t6.0\n" + owed(6.0) + earnedFrequentRenter(2)));
 	}
 
+	@Test
+	public void owe_9_when_rented_a_release_for_three_days() throws Exception {
+		final Customer customer = new Customer(customerName);
+		customer.addRental(new Rental(RELEASE_MOVIE, 3));
+		assertThat(customer.statement(), is(header(customerName) + "\trelease\t9.0\n" + owed(9.0) + earnedFrequentRenter(2)));
+	}
+
 	private String earnedFrequentRenter(final int points) {
 		return "You earned " + points + " frequent renter points";
 	}
