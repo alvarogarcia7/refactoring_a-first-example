@@ -55,18 +55,7 @@ public class Customer {
 		}
 
 		private double add (final Rental each) {
-			double thisAmount = 0;
-			switch (each.getMovie().getPriceCode()) {
-				case Movie.REGULAR:
-					thisAmount += Movie.TYPE_REGULAR.rented(each.getDaysRented());
-					break;
-				case Movie.NEW_RELEASE:
-					thisAmount += Movie.TYPE_NEW_RELEASE.rented(each.getDaysRented());
-					break;
-				case Movie.CHILDRENS:
-					thisAmount += Movie.TYPE_CHILDRENS.rented(each.getDaysRented());
-					break;
-			}
+			double thisAmount = each.getMovie().getPriceType().rented(each.getDaysRented());
 			this.totalAmount+=thisAmount;
 
 			this.addRenterPointsFor(each);

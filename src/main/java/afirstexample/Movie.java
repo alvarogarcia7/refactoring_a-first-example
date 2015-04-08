@@ -20,7 +20,8 @@ public class Movie {
 				amount += (daysRented - 2) * 1.5;
 			}
 			return amount;
-	}};
+		}
+	};
 	public static final MovieType TYPE_CHILDRENS = new MovieType() {
 		@Override
 		public double rented (final int daysRented) {
@@ -28,31 +29,51 @@ public class Movie {
 			if (daysRented > 3) {
 				amount += (daysRented - 3) * 1.5;
 			}
-			return  amount;
+			return amount;
 		}
 	};
 
 	private final String _title;
+	private final MovieType priceType;
 	private int _priceCode;
 
-	public Movie(final String title, final int priceCode) {
+	public Movie (final String title, final int priceCode) {
 		_title = title;
 		_priceCode = priceCode;
+		priceType = MovieType.from(priceCode);
 	}
 
-	public int getPriceCode() {
+	public int getPriceCode () {
 		return _priceCode;
 	}
 
-	public void setPriceCode(final int arg) {
+	public void setPriceCode (final int arg) {
 		_priceCode = arg;
 	}
 
-	public String getTitle() {
+	public String getTitle () {
 		return _title;
+	}
+
+	public MovieType getPriceType () {
+		return priceType;
 	}
 
 	public static abstract class MovieType {
 		public abstract double rented (final int daysRented);
+
+		public static MovieType from (final int priceCode) {
+			switch (priceCode) {
+				case Movie.REGULAR:
+					return Movie.TYPE_REGULAR;
+				case Movie.NEW_RELEASE:
+					return Movie.TYPE_NEW_RELEASE;
+				case Movie.CHILDRENS:
+					return Movie.TYPE_CHILDRENS;
+				default:
+					throw new UnsupportedOperationException("This Type is not being recognized: " + priceCode);
+			}
+
+		}
 	}
 }
