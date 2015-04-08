@@ -61,14 +61,19 @@ public class Customer {
 		}
 
 		//add footer lines
-		result+="Amount owed is " + String.valueOf(cart.totalAmount)+"\n";
+		result+= cart.getAmountOwed();
 		result += "You earned " + String.valueOf(cart.frequentRenterPoints) + " frequent renter points";
 		return result;
 	}
 
+
 	private static class Cart {
 		public double totalAmount = 0d;
 		public int frequentRenterPoints = 0;
+
+		private String getAmountOwed () {
+			return "Amount owed is " + String.valueOf(this.totalAmount)+"\n";
+		}
 
 	}
 
