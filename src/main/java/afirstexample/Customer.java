@@ -21,7 +21,7 @@ public class Customer {
 	}
 
 	public String statement() {
-		double totalAmount = 0;
+		final Cart cart = new Cart();
 		int frequentRenterPoints = 0;
 		final Enumeration<Rental> rentals = _rentals.elements();
 		String result = "Rental Record for " + getName() + "\n";
@@ -58,13 +58,17 @@ public class Customer {
 
 			//show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-			totalAmount +=thisAmount;
+			cart.totalAmount +=thisAmount;
 		}
 
 		//add footer lines
-		result+="Amount owed is " + String.valueOf(totalAmount)+"\n";
+		result+="Amount owed is " + String.valueOf(cart.totalAmount)+"\n";
 		result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
 		return result;
+	}
+
+	private static class Cart {
+		public double totalAmount = 0d;
 	}
 
 }
