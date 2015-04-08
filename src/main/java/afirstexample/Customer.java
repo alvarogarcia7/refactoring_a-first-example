@@ -27,9 +27,7 @@ public class Customer {
 		while (rentals.hasMoreElements()) {
 			final Rental each = rentals.nextElement();
 
-			double thisAmount = cart.calculateAmountFor(each);
-
-			cart.addRenterPointsFor(each);
+			double thisAmount = cart.add(each);
 
 			//show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
@@ -61,7 +59,7 @@ public class Customer {
 			}
 		}
 
-		private double calculateAmountFor (final Rental each) {
+		private double add (final Rental each) {
 			double thisAmount = 0;
 			switch (each.getMovie().getPriceCode()) {
 				case Movie.REGULAR:
@@ -81,6 +79,9 @@ public class Customer {
 					break;
 			}
 			this.totalAmount+=thisAmount;
+
+			this.addRenterPointsFor(each);
+
 			return thisAmount;
 		}
 	}
