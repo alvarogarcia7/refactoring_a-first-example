@@ -27,11 +27,7 @@ public class Customer {
 			cart.add(rentals.nextElement());
 		}
 
-		String result = "Rental Record for " + getName() + "\n";
-		result += cart.getFigures();
-		result += cart.getAmountOwed();
-		result += cart.getEarnedRenterPoints();
-		return result;
+		return cart.generateStatement(getName());
 	}
 
 	private static class Cart {
@@ -88,6 +84,14 @@ public class Customer {
 
 		public String getFigures () {
 			return figures;
+		}
+
+		private String generateStatement (final String customerName) {
+			String result = "Rental Record for " + customerName + "\n";
+			result += this.getFigures();
+			result += this.getAmountOwed();
+			result += this.getEarnedRenterPoints();
+			return result;
 		}
 	}
 
