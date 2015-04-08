@@ -31,10 +31,8 @@ public class Customer {
 
 			cart.addRenterPointsFor(each);
 
-
 			//show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-			cart.totalAmount +=thisAmount;
 		}
 
 		//add footer lines
@@ -82,6 +80,7 @@ public class Customer {
 					}
 					break;
 			}
+			this.totalAmount+=thisAmount;
 			return thisAmount;
 		}
 	}
