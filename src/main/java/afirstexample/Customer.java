@@ -25,27 +25,9 @@ public class Customer {
 		final Enumeration<Rental> rentals = _rentals.elements();
 		String result = "Rental Record for " + getName() + "\n";
 		while (rentals.hasMoreElements()) {
-			double thisAmount = 0;
 			final Rental each = rentals.nextElement();
 
-			//determine amount for each line
-			switch (each.getMovie().getPriceCode()) {
-			case Movie.REGULAR:
-				thisAmount += 2;
-				if (each.getDaysRented() > 2) {
-					thisAmount += (each.getDaysRented() - 2) * 1.5;
-				}
-				break;
-			case Movie.NEW_RELEASE:
-				thisAmount += each.getDaysRented() * 3;
-				break;
-			case Movie.CHILDRENS:
-				thisAmount += 1.5;
-				if (each.getDaysRented() > 3) {
-					thisAmount += (each.getDaysRented() - 3) * 1.5;
-				}
-				break;
-			}
+			double thisAmount = cart.calculateAmountFor(each);
 
 			cart.addRenterPointsFor(each);
 
@@ -79,6 +61,28 @@ public class Customer {
 			if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1) {
 				frequentRenterPoints++;
 			}
+		}
+
+		private double calculateAmountFor (final Rental each) {
+			double thisAmount = 0;
+			switch (each.getMovie().getPriceCode()) {
+				case Movie.REGULAR:
+					thisAmount += 2;
+					if (each.getDaysRented() > 2) {
+						thisAmount += (each.getDaysRented() - 2) * 1.5;
+					}
+					break;
+				case Movie.NEW_RELEASE:
+					thisAmount += each.getDaysRented() * 3;
+					break;
+				case Movie.CHILDRENS:
+					thisAmount += 1.5;
+					if (each.getDaysRented() > 3) {
+						thisAmount += (each.getDaysRented() - 3) * 1.5;
+					}
+					break;
+			}
+			return thisAmount;
 		}
 	}
 
