@@ -24,11 +24,8 @@ public class Customer {
 		final Cart cart = new Cart();
 		final Enumeration<Rental> rentals = _rentals.elements();
 		while (rentals.hasMoreElements()) {
-			final Rental each = rentals.nextElement();
-
-			cart.add(each);
+			cart.add(rentals.nextElement());
 		}
-
 
 		String result = "Rental Record for " + getName() + "\n";
 		result += cart.getFigures();
