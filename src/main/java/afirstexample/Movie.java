@@ -6,6 +6,13 @@ public class Movie {
 	public static final int REGULAR = 0;
 	public static final int NEW_RELEASE = 1;
 
+	public static final MovieType MOVIE_NEW_RELEASE = new MovieType() {
+		@Override
+		public double rented (final int daysRented) {
+			return daysRented * 3;
+		}
+	};
+
 	private final String _title;
 	private int _priceCode;
 
@@ -26,4 +33,7 @@ public class Movie {
 		return _title;
 	}
 
+	public static abstract class MovieType {
+		public abstract double rented (final int daysRented);
+	}
 }
