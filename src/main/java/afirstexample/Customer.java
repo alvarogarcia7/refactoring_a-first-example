@@ -1,6 +1,5 @@
 package afirstexample;
 
-import java.util.Enumeration;
 import java.util.Vector;
 
 public class Customer {
@@ -22,10 +21,8 @@ public class Customer {
 
 	public String statement () {
 		final Cart cart = new Cart();
-		final Enumeration<Rental> rentals = _rentals.elements();
-		while (rentals.hasMoreElements()) {
-			cart.add(rentals.nextElement());
-		}
+
+		_rentals.forEach(cart::add);
 
 		return cart.generateStatement(getName());
 	}
