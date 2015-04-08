@@ -5,10 +5,12 @@ import java.util.Vector;
 public class Customer {
 
 	private final String _name;
+	private final Cart cart;
 	private final Vector<Rental> _rentals = new Vector<>();
 
-	public Customer(final String name) {
+	public Customer (final String name, final Cart cart) {
 		_name = name;
+		this.cart = cart;
 	}
 
 	public void addRental(final Rental arg) {
@@ -20,14 +22,12 @@ public class Customer {
 	}
 
 	public String statement () {
-		final Cart cart = new Cart(new FigureFormatter());
-
 		_rentals.forEach(cart::add);
 
 		return cart.generateStatement(getName());
 	}
 
-	private static class Cart {
+	public static class Cart {
 		private final FigureFormatter formatter;
 		public double totalAmount = 0d;
 		public int frequentRenterPoints = 0;
@@ -100,7 +100,7 @@ public class Customer {
 		}
 	}
 
-	private class FigureFormatter {
+	public static class FigureFormatter {
 
 		private String formatFigure (final Rental each, final double thisAmount) {
 			return "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
