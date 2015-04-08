@@ -22,7 +22,6 @@ public class Customer {
 
 	public String statement() {
 		final Cart cart = new Cart();
-		int frequentRenterPoints = 0;
 		final Enumeration<Rental> rentals = _rentals.elements();
 		String result = "Rental Record for " + getName() + "\n";
 		while (rentals.hasMoreElements()) {
@@ -49,10 +48,10 @@ public class Customer {
 			}
 
 			//add frequent renter points
-			frequentRenterPoints++;
+			cart.frequentRenterPoints++;
 			//add bonus for a two day new release rental
 			if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1) {
-				frequentRenterPoints++;
+				cart.frequentRenterPoints++;
 			}
 
 
@@ -63,12 +62,14 @@ public class Customer {
 
 		//add footer lines
 		result+="Amount owed is " + String.valueOf(cart.totalAmount)+"\n";
-		result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+		result += "You earned " + String.valueOf(cart.frequentRenterPoints) + " frequent renter points";
 		return result;
 	}
 
 	private static class Cart {
 		public double totalAmount = 0d;
+		public int frequentRenterPoints = 0;
+
 	}
 
 }
