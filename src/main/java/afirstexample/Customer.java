@@ -58,10 +58,7 @@ public class Customer {
 			double thisAmount = 0;
 			switch (each.getMovie().getPriceCode()) {
 				case Movie.REGULAR:
-					thisAmount += 2;
-					if (each.getDaysRented() > 2) {
-						thisAmount += (each.getDaysRented() - 2) * 1.5;
-					}
+					thisAmount += Movie.TYPE_REGULAR.rented(each.getDaysRented());
 					break;
 				case Movie.NEW_RELEASE:
 					thisAmount += Movie.TYPE_NEW_RELEASE.rented(each.getDaysRented());

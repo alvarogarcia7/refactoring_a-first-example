@@ -12,6 +12,15 @@ public class Movie {
 			return daysRented * 3;
 		}
 	};
+	public static final MovieType TYPE_REGULAR = new MovieType() {
+		@Override
+		public double rented (final int daysRented) {
+			double amount = 2;
+			if (daysRented > 2) {
+				amount += (daysRented - 2) * 1.5;
+			}
+			return amount;
+	}};
 
 	private final String _title;
 	private int _priceCode;
