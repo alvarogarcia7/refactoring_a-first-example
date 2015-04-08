@@ -6,7 +6,7 @@ public class Movie {
 	public static final int REGULAR = 0;
 	public static final int NEW_RELEASE = 1;
 
-	public static final MovieType MOVIE_NEW_RELEASE = new MovieType() {
+	public static final MovieType TYPE_NEW_RELEASE = new MovieType() {
 		@Override
 		public double rented (final int daysRented) {
 			return daysRented * 3;
