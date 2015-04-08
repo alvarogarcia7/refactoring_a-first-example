@@ -20,7 +20,7 @@ public class Customer {
 	}
 
 	public String statement () {
-		final Cart cart = new Cart();
+		final Cart cart = new Cart(new FigureFormatter());
 
 		_rentals.forEach(cart::add);
 
@@ -28,9 +28,15 @@ public class Customer {
 	}
 
 	private static class Cart {
+		private final FigureFormatter formatter;
 		public double totalAmount = 0d;
 		public int frequentRenterPoints = 0;
 		private String figures = "";
+
+		public Cart (final FigureFormatter formatter) {
+
+			this.formatter = formatter;
+		}
 
 		private String getAmountOwed () {
 			return "Amount owed is " + String.valueOf(this.totalAmount)+"\n";
@@ -70,10 +76,12 @@ public class Customer {
 			this.totalAmount+=thisAmount;
 
 			this.addRenterPointsFor(each);
-			this.addToFigures("\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n");
+			this.addToFigures(formatter.formatFigure(each, thisAmount));
 
 			return thisAmount;
 		}
+
+
 
 		private void addToFigures (final String figure) {
 			this.figures += figure;
@@ -92,4 +100,10 @@ public class Customer {
 		}
 	}
 
+	private class FigureFormatter {
+
+		private String formatFigure (final Rental each, final double thisAmount) {
+			return "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+		}
+	}
 }
