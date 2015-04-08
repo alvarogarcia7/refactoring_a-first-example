@@ -20,21 +20,19 @@ public class Customer {
 		return _name;
 	}
 
-	public String statement() {
+	public String statement () {
 		final Cart cart = new Cart();
 		final Enumeration<Rental> rentals = _rentals.elements();
-		String result = "Rental Record for " + getName() + "\n";
 		while (rentals.hasMoreElements()) {
 			final Rental each = rentals.nextElement();
 
-			double thisAmount = cart.add(each);
-
-			//show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+			cart.add(each);
 		}
 
-		//add footer lines
-		result+= cart.getAmountOwed();
+
+		String result = "Rental Record for " + getName() + "\n";
+		result += cart.getFigures();
+		result += cart.getAmountOwed();
 		result += cart.getEarnedRenterPoints();
 		return result;
 	}
@@ -42,6 +40,7 @@ public class Customer {
 	private static class Cart {
 		public double totalAmount = 0d;
 		public int frequentRenterPoints = 0;
+		private String figures = "";
 
 		private String getAmountOwed () {
 			return "Amount owed is " + String.valueOf(this.totalAmount)+"\n";
@@ -81,8 +80,17 @@ public class Customer {
 			this.totalAmount+=thisAmount;
 
 			this.addRenterPointsFor(each);
+			this.addToFigures("\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n");
 
 			return thisAmount;
+		}
+
+		private void addToFigures (final String figure) {
+			this.figures += figure;
+		}
+
+		public String getFigures () {
+			return figures;
 		}
 	}
 
