@@ -21,6 +21,16 @@ public class Movie {
 			}
 			return amount;
 	}};
+	public static final MovieType TYPE_CHILDRENS = new MovieType() {
+		@Override
+		public double rented (final int daysRented) {
+			double amount = 1.5;
+			if (daysRented > 3) {
+				amount += (daysRented - 3) * 1.5;
+			}
+			return  amount;
+		}
+	};
 
 	private final String _title;
 	private int _priceCode;

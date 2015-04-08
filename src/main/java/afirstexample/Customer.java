@@ -64,10 +64,7 @@ public class Customer {
 					thisAmount += Movie.TYPE_NEW_RELEASE.rented(each.getDaysRented());
 					break;
 				case Movie.CHILDRENS:
-					thisAmount += 1.5;
-					if (each.getDaysRented() > 3) {
-						thisAmount += (each.getDaysRented() - 3) * 1.5;
-					}
+					thisAmount += Movie.TYPE_CHILDRENS.rented(each.getDaysRented());
 					break;
 			}
 			this.totalAmount+=thisAmount;
