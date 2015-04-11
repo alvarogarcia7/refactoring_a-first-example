@@ -17,14 +17,10 @@ public class Customer {
 		_rentals.addElement(arg);
 	}
 
-	public String getName() {
-		return _name;
-	}
-
 	public String statement () {
 		_rentals.forEach(cart::add);
 
-		return cart.generateStatement(getName());
+		return cart.generateStatement(_name);
 	}
 
 }
