@@ -8,7 +8,7 @@ public class Formatter {
 	private final String NEWLINE_SEPARATOR = "\n";
 
 	public String formatStatement (final String customerName, final String figures, final String amountOwed, final String earnedRenterPoints) {
-		String result = "Rental Record for " + customerName + "\n";
+		String result = "Rental Record for " + customerName + NEWLINE_SEPARATOR;
 		result += figures;
 		result += amountOwed;
 		result += earnedRenterPoints;
