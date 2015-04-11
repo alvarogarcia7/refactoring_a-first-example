@@ -56,7 +56,13 @@ public class Cart {
 		this.figures += figure;
 	}
 
-	public String getFigures () {
+	public String getFigures ()
+	{
+		String figuresFromList = "";
+		for (Figure current : figureList) {
+			figuresFromList += formatter.formatFigure(current.rental, current.rentalAmount);
+		}
+
 		return figures;
 	}
 
