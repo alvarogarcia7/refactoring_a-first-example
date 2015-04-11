@@ -7,11 +7,11 @@ public class Formatter {
 	private final String FIELD_SEPARATOR = "\t";
 	private final String NEWLINE_SEPARATOR = "\n";
 
-	public String formatStatement (final String customerName, final String figures, final String amountOwed, final String earnedRenterPoints) {
+	public String formatStatement (final String customerName, final String figures, final String amountOwed, final String renterPoints) {
 		String result = "Rental Record for " + customerName + NEWLINE_SEPARATOR;
 		result += figures;
 		result += amountOwed;
-		result += earnedRenterPoints;
+		result += renterPoints;
 		return result;
 	}
 
