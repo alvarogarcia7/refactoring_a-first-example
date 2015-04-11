@@ -32,4 +32,12 @@ public class Movie {
 		return priceType;
 	}
 
+	int getRenterPoints (final int daysRented) {
+		int points = 1;
+		//add bonus for a two day new release rental
+		if ((priceType == MovieType.TYPE_NEW_RELEASE) && daysRented > 1) {
+			points++;
+		}
+		return points;
+	}
 }

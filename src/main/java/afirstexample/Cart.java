@@ -28,11 +28,7 @@ public class Cart {
 	}
 
 	public void addRenterPointsFor (final Rental rental) {
-		frequentRenterPoints++;
-		//add bonus for a two day new release rental
-		if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1) {
-			frequentRenterPoints++;
-		}
+		this.frequentRenterPoints += rental.getMovie().getRenterPoints(rental.getDaysRented());
 	}
 
 	protected double add (final Rental rental) {
