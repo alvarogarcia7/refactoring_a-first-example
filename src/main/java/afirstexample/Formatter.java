@@ -19,4 +19,12 @@ public class Formatter {
 	public String formatFigure (final Rental rental, final double rentalAmount) {
 		return this.figureFormatter.formatFigure(rental, rentalAmount);
 	}
+
+	public String formatAmountOwed (final double totalAmount) {
+		return "Amount owed is " + String.valueOf(totalAmount)+"\n";
+	}
+
+	public String formatRenterPoints (final int frequentRenterPoints) {
+		return "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+	}
 }

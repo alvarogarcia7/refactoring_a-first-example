@@ -18,11 +18,11 @@ public class Cart {
 	}
 
 	private String getAmountOwed () {
-		return "Amount owed is " + String.valueOf(this.totalAmount)+"\n";
+		return formatter.formatAmountOwed(totalAmount);
 	}
 
 	private String getEarnedRenterPoints () {
-		return "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+		return formatter.formatRenterPoints(frequentRenterPoints);
 	}
 
 	public void addRenterPointsFor (final Rental rental) {
