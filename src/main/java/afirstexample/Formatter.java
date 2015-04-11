@@ -15,7 +15,7 @@ public class Formatter {
 		return result;
 	}
 
-	public String formatFigure (final Rental rental, final double rentalAmount) {
+	private String formatFigure (final Rental rental, final double rentalAmount) {
 		return FIELD_SEPARATOR + rental.getMovie().getTitle() + FIELD_SEPARATOR + String.valueOf(rentalAmount) + NEWLINE_SEPARATOR;
 	}
 
@@ -25,5 +25,9 @@ public class Formatter {
 
 	public String formatRenterPoints (final int renterPoints) {
 		return "You earned " + String.valueOf(renterPoints) + " frequent renter points";
+	}
+
+	public String formatFigure (final Figure current) {
+		return formatFigure(current.rental, current.rentalAmount);
 	}
 }
