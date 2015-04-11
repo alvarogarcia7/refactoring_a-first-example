@@ -33,17 +33,4 @@ public abstract class MovieType {
 
 	public abstract double rented (final int daysRented);
 
-	public static MovieType from (final int priceCode) {
-		switch (priceCode) {
-			case Movie.REGULAR:
-				return TYPE_REGULAR;
-			case Movie.NEW_RELEASE:
-				return TYPE_NEW_RELEASE;
-			case Movie.CHILDRENS:
-				return TYPE_CHILDRENS;
-			default:
-				throw new UnsupportedOperationException("This Type is not being recognized: " + priceCode);
-		}
-
-	}
 }
