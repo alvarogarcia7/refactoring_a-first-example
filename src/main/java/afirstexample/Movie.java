@@ -20,10 +20,6 @@ public class Movie {
 		priceType = movieType;
 	}
 
-	public int getPriceCode () {
-		return _priceCode;
-	}
-
 	public String getTitle () {
 		return _title;
 	}
@@ -34,7 +30,6 @@ public class Movie {
 
 	int getRenterPoints (final int daysRented) {
 		int points = 1;
-		//add bonus for a two day new release rental
 		if ((priceType == MovieType.TYPE_NEW_RELEASE) && daysRented > 1) {
 			points++;
 		}
