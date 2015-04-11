@@ -27,7 +27,7 @@ public class Formatter {
 		return "You earned " + String.valueOf(renterPoints) + " frequent renter points";
 	}
 
-	public String formatFigure (final Figure current) {
+	public String format (final Figure current) {
 		return formatFigure(current.rental, current.rentalAmount);
 	}
 }

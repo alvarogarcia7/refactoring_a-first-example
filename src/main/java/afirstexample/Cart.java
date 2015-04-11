@@ -47,7 +47,7 @@ public class Cart {
 		String figureText = "";
 		for (Figure current : figures) {
 			//TODO AGB feature envy
-			figureText += formatter.formatFigure(current);
+			figureText += formatter.format(current);
 		}
 
 		return figureText;
