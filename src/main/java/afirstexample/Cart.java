@@ -36,13 +36,13 @@ public class Cart {
 	}
 
 	protected double add (final Rental rental) {
-		double thisAmount = rental.getMovie().getPriceType().rented(rental.getDaysRented());
-		this.totalAmount+=thisAmount;
+		double rentalPrice = rental.getMovie().getPriceType().rented(rental.getDaysRented());
+		this.totalAmount+=rentalPrice;
 
 		this.addRenterPointsFor(rental);
-		this.addToFigures(new Figure(rental, thisAmount));
+		this.addToFigures(new Figure(rental, rentalPrice));
 
-		return thisAmount;
+		return rentalPrice;
 	}
 
 	private void addToFigures (final Figure figure) {
