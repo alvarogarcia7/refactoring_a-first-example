@@ -11,9 +11,13 @@ public class Movie {
 	private int _priceCode;
 
 	public Movie (final String title, final int priceCode) {
+		this(title, priceCode, MovieType.from(priceCode));
+	}
+
+	public Movie (final String title, final int priceCode, final MovieType movieType) {
 		_title = title;
 		_priceCode = priceCode;
-		priceType = MovieType.from(priceCode);
+		priceType = movieType;
 	}
 
 	public int getPriceCode () {

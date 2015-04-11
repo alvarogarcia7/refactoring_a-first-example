@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 public class CustomerShould {
 
 	private static final Movie RELEASE_MOVIE = new Movie("release", Movie.NEW_RELEASE);
-	private static final Movie CHILDRENS_MOVIE = new Movie("childrens", Movie.CHILDRENS);
+	private static final Movie CHILDRENS_MOVIE = new Movie("childrens", Movie.CHILDRENS, MovieType.TYPE_CHILDRENS);
 	private static final Movie REGULAR_MOVIE = new Movie("regular", Movie.REGULAR);
 	final String customerName = "John";
 	private Customer customer;
