@@ -12,10 +12,6 @@ public class Cart {
 	public int frequentRenterPoints = 0;
 	private List<Figure> figureList;
 
-	public Cart (final FigureFormatter figureFormatter, final StatementFormatter statementFormatter) {
-		this(new Formatter(figureFormatter, statementFormatter));
-	}
-
 	public Cart (final Formatter formatter) {
 		this.formatter = formatter;
 		this.figureList = new ArrayList<>();
