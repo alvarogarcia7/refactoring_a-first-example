@@ -28,10 +28,12 @@ public class Cart {
 	}
 
 	public void addRenterPointsFor (final Rental rental) {
+		//TODO AGB feature envy
 		this.frequentRenterPoints += rental.getMovie().getRenterPoints(rental.getDaysRented());
 	}
 
 	protected double add (final Rental rental) {
+		//TODO AGB feature envy
 		double rentalPrice = rental.getMovie().getPriceType().rented(rental.getDaysRented());
 		this.totalAmount+=rentalPrice;
 
