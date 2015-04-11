@@ -1,5 +1,8 @@
 package afirstexample;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
 * Created by alvaro on 11/04/15.
 */
@@ -9,9 +12,10 @@ public class Cart {
 	public double totalAmount = 0d;
 	public int frequentRenterPoints = 0;
 	private String figures = "";
+	private List<Figure> figureList;
 
 	public Cart (final FigureFormatter formatter, final StatementFormatter statementFormatter) {
-
+		this.figureList = new ArrayList<>();
 		this.formatter = formatter;
 		this.statementFormatter = statementFormatter;
 	}
@@ -38,10 +42,14 @@ public class Cart {
 
 		this.addRenterPointsFor(each);
 		this.addToFigures(formatter.formatFigure(each, thisAmount));
+		this.addToFigures(new Figure(each, thisAmount));
 
 		return thisAmount;
 	}
 
+	private void addToFigures (final Figure figure) {
+		figureList.add(figure);
+	}
 
 
 	private void addToFigures (final String figure) {
@@ -57,4 +65,13 @@ public class Cart {
 		return result;
 	}
 
+	private class Figure {
+		private final Rental rental;
+		private final double rentalAmount;
+
+		public Figure (final Rental rental, final double rentalAmount) {
+			this.rental = rental;
+			this.rentalAmount = rentalAmount;
+		}
+	}
 }
