@@ -10,10 +10,6 @@ public class Movie {
 	private final MovieType priceType;
 	private int _priceCode;
 
-	public Movie (final String title, final int priceCode) {
-		this(title, priceCode, MovieType.from(priceCode));
-	}
-
 	public Movie (final String title, final int priceCode, final MovieType movieType) {
 		_title = title;
 		_priceCode = priceCode;
