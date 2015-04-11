@@ -7,12 +7,23 @@ public class Formatter {
 	private final String FIELD_SEPARATOR = "\t";
 	private final String NEWLINE_SEPARATOR = "\n";
 
-	public String formatStatement (final String customerName, final String figures, final String amountOwed, final String renterPoints) {
+	public String formatStatement (final String customerName, final Figures figures, final String amountOwed, final String renterPoints) {
 		String result = "Rental Record for " + customerName + NEWLINE_SEPARATOR;
-		result += figures;
+		result += getFigures(figures);
 		result += amountOwed;
 		result += renterPoints;
 		return result;
+	}
+
+	public String getFigures (Figures figures)
+	{
+		String figureText = "";
+		for (Figure current : figures) {
+			//TODO AGB feature envy
+			figureText += this.format(current);
+		}
+
+		return figureText;
 	}
 
 	public String formatAmountOwed (final double amountOwed) {

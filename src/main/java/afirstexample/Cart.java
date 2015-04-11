@@ -42,19 +42,8 @@ public class Cart {
 		figures.add(figure);
 	}
 
-	public String getFigures ()
-	{
-		String figureText = "";
-		for (Figure current : figures) {
-			//TODO AGB feature envy
-			figureText += formatter.format(current);
-		}
-
-		return figureText;
-	}
-
 	String generateStatement (final String customerName) {
-		String result = formatter.formatStatement(customerName, this.getFigures(), this.getAmountOwed(), this
+		String result = formatter.formatStatement(customerName, figures, this.getAmountOwed(), this
 				.getEarnedRenterPoints());
 		return result;
 	}
