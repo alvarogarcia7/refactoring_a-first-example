@@ -8,11 +8,9 @@ public class Movie {
 
 	private final String _title;
 	private final MovieType priceType;
-	private int _priceCode;
 
-	public Movie (final String title, final int priceCode, final MovieType movieType) {
+	public Movie (final String title, final MovieType movieType) {
 		_title = title;
-		_priceCode = priceCode;
 		priceType = movieType;
 	}
 
