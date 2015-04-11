@@ -132,7 +132,7 @@ public class CustomerShould {
 	}
 
 	private Customer newCustomer () {
-		return new Customer(customerName, new Cart(new FigureFormatter()));
+		return new Customer(customerName, new Cart(new FigureFormatter(), new StatementFormatter()));
 	}
 
 }

@@ -5,13 +5,15 @@ package afirstexample;
 */
 public class Cart {
 	private final FigureFormatter formatter;
+	private final StatementFormatter statementFormatter;
 	public double totalAmount = 0d;
 	public int frequentRenterPoints = 0;
 	private String figures = "";
 
-	public Cart (final FigureFormatter formatter) {
+	public Cart (final FigureFormatter formatter, final StatementFormatter statementFormatter) {
 
 		this.formatter = formatter;
+		this.statementFormatter = statementFormatter;
 	}
 
 	private String getAmountOwed () {
