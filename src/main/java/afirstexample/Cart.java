@@ -11,7 +11,6 @@ public class Cart {
 	private final StatementFormatter statementFormatter;
 	public double totalAmount = 0d;
 	public int frequentRenterPoints = 0;
-	private String figures = "";
 	private List<Figure> figureList;
 
 	public Cart (final FigureFormatter formatter, final StatementFormatter statementFormatter) {
@@ -41,7 +40,6 @@ public class Cart {
 		this.totalAmount+=thisAmount;
 
 		this.addRenterPointsFor(each);
-		this.addToFigures(formatter.formatFigure(each, thisAmount));
 		this.addToFigures(new Figure(each, thisAmount));
 
 		return thisAmount;
@@ -49,11 +47,6 @@ public class Cart {
 
 	private void addToFigures (final Figure figure) {
 		figureList.add(figure);
-	}
-
-
-	private void addToFigures (final String figure) {
-		this.figures += figure;
 	}
 
 	public String getFigures ()
