@@ -7,16 +7,18 @@ import java.util.List;
 * Created by alvaro on 11/04/15.
 */
 public class Cart {
-	private final FigureFormatter figureFormatter;
-	private final StatementFormatter statementFormatter;
+	private final Formatter formatter;
 	public double totalAmount = 0d;
 	public int frequentRenterPoints = 0;
 	private List<Figure> figureList;
 
 	public Cart (final FigureFormatter figureFormatter, final StatementFormatter statementFormatter) {
+		this(new Formatter(figureFormatter, statementFormatter));
+	}
+
+	public Cart (final Formatter formatter) {
+		this.formatter = formatter;
 		this.figureList = new ArrayList<>();
-		this.figureFormatter = figureFormatter;
-		this.statementFormatter = statementFormatter;
 	}
 
 	private String getAmountOwed () {
@@ -51,14 +53,15 @@ public class Cart {
 	{
 		String figuresFromList = "";
 		for (Figure current : figureList) {
-			figuresFromList += figureFormatter.formatFigure(current.rental, current.rentalAmount);
+			figuresFromList += formatter.formatFigure(current.rental, current.rentalAmount);
 		}
 
 		return figuresFromList;
 	}
 
 	String generateStatement (final String customerName) {
-		String result = statementFormatter.formatStatement(customerName, this.getFigures(), this.getAmountOwed(), this.getEarnedRenterPoints());
+		String result = formatter.formatStatement(customerName, this.getFigures(), this.getAmountOwed(), this
+				.getEarnedRenterPoints());
 		return result;
 	}
 
