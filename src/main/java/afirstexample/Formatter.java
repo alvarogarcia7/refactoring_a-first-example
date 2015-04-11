@@ -24,6 +24,6 @@ public class Formatter {
 	}
 
 	public String format (final Figure current) {
-		return FIELD_SEPARATOR + current.rental.getMovie().getTitle() + FIELD_SEPARATOR + String.valueOf(current.rentalAmount) + NEWLINE_SEPARATOR;
+		return FIELD_SEPARATOR + current.rental.getMovie().getTitle() + FIELD_SEPARATOR + current.rentalAmount + NEWLINE_SEPARATOR;
 	}
 }
