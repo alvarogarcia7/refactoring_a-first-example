@@ -35,12 +35,12 @@ public class Cart {
 		}
 	}
 
-	protected double add (final Rental each) {
-		double thisAmount = each.getMovie().getPriceType().rented(each.getDaysRented());
+	protected double add (final Rental rental) {
+		double thisAmount = rental.getMovie().getPriceType().rented(rental.getDaysRented());
 		this.totalAmount+=thisAmount;
 
-		this.addRenterPointsFor(each);
-		this.addToFigures(new Figure(each, thisAmount));
+		this.addRenterPointsFor(rental);
+		this.addToFigures(new Figure(rental, thisAmount));
 
 		return thisAmount;
 	}
