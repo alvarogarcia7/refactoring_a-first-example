@@ -1,8 +1,5 @@
 package afirstexample;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
 * Created by alvaro on 11/04/15.
 */
@@ -10,11 +7,11 @@ public class Cart {
 	private final Formatter formatter;
 	public double totalAmount = 0d;
 	public int frequentRenterPoints = 0;
-	private List<Figure> figures;
+	private Figures figures;
 
-	public Cart (final Formatter formatter) {
+	public Cart (final Figures figures, final Formatter formatter) {
+		this.figures = figures;
 		this.formatter = formatter;
-		this.figures = new ArrayList<>();
 	}
 
 	private String getAmountOwed () {
@@ -49,6 +46,7 @@ public class Cart {
 	{
 		String figureText = "";
 		for (Figure current : figures) {
+			//TODO AGB feature envy
 			figureText += formatter.formatFigure(current.rental, current.rentalAmount);
 		}
 
@@ -61,13 +59,4 @@ public class Cart {
 		return result;
 	}
 
-	private class Figure {
-		private final Rental rental;
-		private final double rentalAmount;
-
-		public Figure (final Rental rental, final double rentalAmount) {
-			this.rental = rental;
-			this.rentalAmount = rentalAmount;
-		}
-	}
 }
