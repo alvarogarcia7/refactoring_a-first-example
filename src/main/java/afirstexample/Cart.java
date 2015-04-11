@@ -53,15 +53,8 @@ public class Cart {
 	}
 
 	String generateStatement (final String customerName) {
-		String result = formatStatement(customerName);
+		String result = statementFormatter.formatStatement(customerName, this.getFigures(), this.getAmountOwed(), this.getEarnedRenterPoints());
 		return result;
 	}
 
-	private String formatStatement (final String customerName) {
-		String result = "Rental Record for " + customerName + "\n";
-		result += this.getFigures();
-		result += this.getAmountOwed();
-		result += this.getEarnedRenterPoints();
-		return result;
-	}
 }
