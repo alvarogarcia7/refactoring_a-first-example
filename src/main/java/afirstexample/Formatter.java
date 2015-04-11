@@ -24,6 +24,7 @@ public class Formatter {
 	}
 
 	public String format (final Figure current) {
+		//TODO AGB feature envy
 		return FIELD_SEPARATOR + current.rental.getMovie().getTitle() + FIELD_SEPARATOR + current.rentalAmount + NEWLINE_SEPARATOR;
 	}
 }
