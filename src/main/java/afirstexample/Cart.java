@@ -10,11 +10,11 @@ public class Cart {
 	private final Formatter formatter;
 	public double totalAmount = 0d;
 	public int frequentRenterPoints = 0;
-	private List<Figure> figureList;
+	private List<Figure> figures;
 
 	public Cart (final Formatter formatter) {
 		this.formatter = formatter;
-		this.figureList = new ArrayList<>();
+		this.figures = new ArrayList<>();
 	}
 
 	private String getAmountOwed () {
@@ -42,17 +42,17 @@ public class Cart {
 	}
 
 	private void addToFigures (final Figure figure) {
-		figureList.add(figure);
+		figures.add(figure);
 	}
 
 	public String getFigures ()
 	{
-		String figuresFromList = "";
-		for (Figure current : figureList) {
-			figuresFromList += formatter.formatFigure(current.rental, current.rentalAmount);
+		String figureText = "";
+		for (Figure current : figures) {
+			figureText += formatter.formatFigure(current.rental, current.rentalAmount);
 		}
 
-		return figuresFromList;
+		return figureText;
 	}
 
 	String generateStatement (final String customerName) {
