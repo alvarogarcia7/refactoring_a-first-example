@@ -63,7 +63,7 @@ public class Cart {
 			figuresFromList += formatter.formatFigure(current.rental, current.rentalAmount);
 		}
 
-		return figures;
+		return figuresFromList;
 	}
 
 	String generateStatement (final String customerName) {
