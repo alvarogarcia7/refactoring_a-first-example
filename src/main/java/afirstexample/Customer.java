@@ -13,8 +13,8 @@ public class Customer {
 		this.cart = cart;
 	}
 
-	public void addRental(final Rental arg) {
-		_rentals.addElement(arg);
+	public void addRental(final Rental rental) {
+		_rentals.addElement(rental);
 	}
 
 	public String statement () {
