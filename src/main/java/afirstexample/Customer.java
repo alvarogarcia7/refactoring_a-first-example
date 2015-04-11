@@ -86,7 +86,9 @@ public class Customer {
 	public static class FigureFormatter {
 
 		private String formatFigure (final Rental each, final double thisAmount) {
-			return "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+			final String fieldSeparator = "\t";
+			final String newLineSeparator = "\n";
+			return fieldSeparator + each.getMovie().getTitle() + fieldSeparator + String.valueOf(thisAmount) + newLineSeparator;
 		}
 	}
 }
